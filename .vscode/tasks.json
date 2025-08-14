@@ -1,0 +1,103 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "setup-build",
+            "type": "shell",
+            "command": "meson",
+            "args": [
+                "setup",
+                "build",
+                "--buildtype=debug",
+                "-Dcplayer=true",
+                "-Dlibmpv=true",
+                "-Dd3d11=enabled",
+                "-Dd3d-hwaccel=enabled",
+                "-Dd3d9-hwaccel=enabled",
+                "-Dgl-dxinterop=enabled",
+                "-Dgl-dxinterop-d3d9=enabled",
+                "-Dvulkan=auto",
+                "-Dwasapi=enabled",
+                "-Dshaderc=auto",
+                "-Dspirv-cross=auto",
+                "-Dlibmpv=true",
+                "-Ddebug=true"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PATH": "D:/msys64/mingw64/bin;${env:PATH}",
+                    "PKG_CONFIG_PATH": "D:/msys64/mingw64/lib/pkgconfig"
+                }
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "build-debug",
+            "type": "shell",
+            "command": "meson",
+            "args": [
+                "compile",
+                "-C",
+                "build"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PATH": "D:/msys64/mingw64/bin;${env:PATH}"
+                }
+            },
+            "dependsOn": "setup-build",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "rm",
+            "args": [
+                "-rf",
+                "build"
+            ],
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "reconfigure",
+            "type": "shell",
+            "command": "meson",
+            "args": [
+                "configure",
+                "build",
+                "--buildtype=debug"
+            ],
+            "group": "build",
+            "options": {
+                "cwd": "${workspaceFolder}",
+                "env": {
+                    "PATH": "D:/msys64/mingw64/bin;${env:PATH}"
+                }
+            }
+        }
+    ]
+}
