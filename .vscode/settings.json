@@ -1,0 +1,19 @@
+{
+    "terminal.integrated.profiles.windows": {
+        "mingw64": {
+            "path": "D:\\msys64\\usr\\bin\\bash.exe",
+            "args": ["--login"],
+            "env": {
+                "MSYSTEM": "MINGW64",
+                "CHERE_INVOKING": "1",
+                "PATH": "D:\\msys64\\mingw64\\bin;D:\\msys64\\usr\\bin;${env:PATH}"
+            }
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "mingw64",
+    "terminal.integrated.env.windows": {
+        "MSYSTEM": "MINGW64",
+        "PATH": "D:\\msys64\\mingw64\\bin;D:\\msys64\\usr\\bin;${env:PATH}"
+    },
+    "makefile.configureOnOpen": true
+}
